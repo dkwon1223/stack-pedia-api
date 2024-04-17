@@ -88,6 +88,7 @@ app.locals.data = {
       date_created: "1995-05-23",
       image_url:
         "https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/1200px-Java_programming_language_logo.svg.png",
+      image2_url: "https://qbitcode.com/wp-content/uploads/2023/08/java.webp",
       use_cases: [
         "Enterprise Applications",
         "Android Development",
@@ -106,6 +107,7 @@ app.locals.data = {
       date_created: "1995-12-04",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/600px-JavaScript-logo.png",
+      image2_url: "https://www.noobpreneur.com/wp-content/uploads/2019/08/Javascript-810.jpg",
       use_cases: [
         "Web Development",
         "Frontend Development",
@@ -125,6 +127,7 @@ app.locals.data = {
       date_created: "1985-10-01",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1920px-ISO_C%2B%2B_Logo.svg.png",
+      image2_url: "https://qph.cf2.quoracdn.net/main-qimg-9efba3b88a2e2ede86e1d7fb39c807f2",
       use_cases: [
         "System/Kernel Programming",
         "Game Development",
@@ -143,6 +146,7 @@ app.locals.data = {
       date_created: "1995-12-21",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png",
+      image2_url: "https://cdn.geekboots.com/geek/ruby-programming-meta-1683275779432.jpg",
       use_cases: ["Web Development", "Prototyping", "Automation"],
       documentation_link: "https://www.ruby-lang.org/en/documentation/",
       summary:
@@ -157,6 +161,7 @@ app.locals.data = {
       date_created: "2009-11-10",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/1920px-Go_Logo_Blue.svg.png",
+      image2_url: "https://codecondo.com/wp-content/uploads/2017/11/Go-Programming.jpg",
       use_cases: ["Backend Development", "Cloud Services", "Networking"],
       documentation_link: "https://golang.org/doc/",
       summary:
@@ -171,6 +176,7 @@ app.locals.data = {
       date_created: "2014-06-02",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swift_logo.svg/1200px-Swift_logo.svg.png",
+      image2_url: "https://9series.com/blog/wp-content/uploads/2016/10/s-Swift-A-Unique-Programming-Language-for-iOS.jpg",
       use_cases: ["iOS Development", "macOS Development", "App Development"],
       documentation_link: "https://swift.org/documentation/",
       summary:
@@ -185,6 +191,7 @@ app.locals.data = {
       date_created: "1994-06-08",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/2560px-PHP-logo.svg.png",
+      image2_url: "https://qph.cf2.quoracdn.net/main-qimg-d90493c98759e01faccd4c3fd67aa764",
       use_cases: [
         "Web Development",
         "Server-side Scripting",
@@ -203,6 +210,7 @@ app.locals.data = {
       date_created: "2010-07-07",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1920px-Rust_programming_language_black_logo.svg.png",
+      image2_url: "https://media.licdn.com/dms/image/D5612AQG_VNcB7VI-Cw/article-cover_image-shrink_600_2000/0/1681973828533?e=2147483647&v=beta&t=Lk1HvaWbG8R1-4ivpg0qSj7fC5z-VsItGXrduXA_t7Y",
       use_cases: ["Systems Programming", "Web Assembly", "Game Development"],
       documentation_link: "https://www.rust-lang.org/learn",
       summary:
@@ -217,6 +225,7 @@ app.locals.data = {
       date_created: "2011-07-20",
       image_url:
         "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/kotlin.svg",
+      image2_url: "https://serbian.tech/wp-content/uploads/2021/05/louis-tsai-lqcvMiBABHw-unsplash-1024x768.jpg",
       use_cases: [
         "Android App Development",
         "Backend Development",
@@ -235,6 +244,7 @@ app.locals.data = {
       date_created: "2012-10-01",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png",
+      image2_url: "https://www.securityjourney.com/hubfs/Blog/TypeScript/SJ2022_Blog_TypeScriptLanguage.jpg#keepProtocol",
       use_cases: [
         "Large-scale JavaScript Development",
         "Frontend Development",
@@ -255,6 +265,7 @@ app.locals.data = {
       date_created: "2013-05-29",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png",
+      image2_url: "https://www.osedea.com/static/50a729cbf01055de07982ec9d064467c/d84c6/lautaro-andreani-xkbaqlcqeb4-unsplash.jpg",
       use_cases: [
         "Single Page Applications",
         "UI Components",
@@ -273,6 +284,7 @@ app.locals.data = {
       date_created: "2006-08-26",
       image_url:
         "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/JQuery_logo.svg/1920px-JQuery_logo.svg.png",
+      image2_url: "https://media.dev.to/cdn-cgi/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2Fsbn71yujt0f3ug5k1mvs.jpeg",
       use_cases: ["DOM Manipulation", "Event Handling", "AJAX"],
       documentation_link: "https://api.jquery.com/",
       summary:
@@ -287,6 +299,7 @@ app.locals.data = {
       date_created: "2006-08-26",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/NumPy_logo.svg/1200px-NumPy_logo.svg.png",
+      image2_url: "https://media.licdn.com/dms/image/D4D12AQGnM_JZqmIGEA/article-cover_image-shrink_720_1280/0/1686919973736?e=2147483647&v=beta&t=ceqwE8bMznyzwgcZxN-UyWOk3RuR0aBmZFHxsYFb_ak",
       use_cases: ["Numerical Computing", "Data Analysis", "Machine Learning"],
       documentation_link: "https://numpy.org/doc/",
       summary:
@@ -301,6 +314,7 @@ app.locals.data = {
       date_created: "2008-11-07",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/1200px-Pandas_logo.svg.png",
+      image2_url: "https://i0.wp.com/indianaiproduction.com/wp-content/uploads/2019/07/Python-Pandas-Tutorial.png?fit=1280%2C720&ssl=1",
       use_cases: ["Data Manipulation", "Data Analysis", "Time Series Analysis"],
       documentation_link: "https://pandas.pydata.org/docs/",
       summary:
@@ -315,6 +329,7 @@ app.locals.data = {
       date_created: "2001-09-01",
       image_url:
         "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hibernate.svg",
+      image2_url: "https://seldomindia.com/wp-content/uploads/2023/12/hibernate-java-1.jpg",
       use_cases: [
         "Object-Relational Mapping",
         "Database Interaction",
@@ -333,6 +348,7 @@ app.locals.data = {
       date_created: "2001-01-01",
       image_url:
         "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/boost.svg",
+      image2_url: "https://cdn.educba.com/academy/wp-content/uploads/2020/10/C-Boost.jpg",
       use_cases: [
         "General Purpose Programming",
         "Advanced Data Structures",
@@ -353,6 +369,7 @@ app.locals.data = {
       date_created: "2005-07-21",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Django_logo.svg/1200px-Django_logo.svg.png",
+      image2_url: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/285622826/original/cf424ced94d6180acc0e71160d8f841aab239121/develop-website-with-django-python-full-stack-developer-fe99.jpg",
       use_cases: ["Web Development", "Backend Development", "API Development"],
       documentation_link: "https://docs.djangoproject.com/en/stable/",
       summary:
@@ -367,6 +384,7 @@ app.locals.data = {
       date_created: "2010-04-01",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/1200px-Flask_logo.svg.png",
+      image2_url: "https://cdn.hackersandslackers.com/2020/02/flask-intro.jpg",
       use_cases: ["Microservices", "API Development", "Prototyping"],
       documentation_link: "https://flask.palletsprojects.com/en/2.1.x/",
       summary:
@@ -381,6 +399,7 @@ app.locals.data = {
       date_created: "2014-04-01",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/1200px-Spring_Framework_Logo_2018.svg.png",
+      image2_url: "https://assets-global.website-files.com/63e3d6905bacd6855fa38c1c/63e3d6905bacd6ff47a390cc_THUMB_%20Advantages%20of%20Spring%20Boot-min.jpg",
       use_cases: [
         "Enterprise Applications",
         "Microservices",
@@ -400,6 +419,7 @@ app.locals.data = {
       date_created: "2010-11-16",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Expressjs.png/1280px-Expressjs.png",
+      image2_url: "https://miro.medium.com/v2/resize:fit:805/1*7fe7SkSNP6Y8PvTRm4Jl6Q.png",
       use_cases: ["Web Applications", "API Services", "Microservices"],
       documentation_link: "https://expressjs.com/",
       summary:
@@ -414,6 +434,7 @@ app.locals.data = {
       date_created: "2004-12-13",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Ruby_On_Rails_Logo.svg/1200px-Ruby_On_Rails_Logo.svg.png",
+      image2_url: "https://twinslash.com/assets/images/uploads/ruby-on-rails-development.jpg",
       use_cases: ["Web Development", "API Development", "SaaS Applications"],
       documentation_link: "https://guides.rubyonrails.org/",
       summary:
@@ -428,6 +449,7 @@ app.locals.data = {
       date_created: "2002-01-05",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/1200px-.NET_Core_Logo.svg.png",
+      image2_url: "https://www.aceinfoway.com/blog/wp-content/uploads/2020/05/top-5-benefits-of-using-aspnet-core.jpg",
       use_cases: [
         "Web Development",
         "Enterprise Applications",
@@ -446,6 +468,7 @@ app.locals.data = {
       date_created: "2011-06-09",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1024px-Laravel.svg.png",
+      image2_url: "https://cdn.hdwebsoft.com/wp-content/uploads/2021/11/Thiet-ke-chua-co-ten-4.jpg.webp",
       use_cases: ["Web Development", "API Development", "Microservices"],
       documentation_link: "https://laravel.com/docs/8.x",
       summary:
@@ -460,6 +483,7 @@ app.locals.data = {
       date_created: "2005-10-18",
       image_url:
         "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/symfony.svg",
+      image2_url: "https://toolapp.fr/wp-content/uploads/2023/02/symfony.webp",
       use_cases: ["Web Applications", "RESTful APIs", "Microservices"],
       documentation_link: "https://symfony.com/doc/current/index.html",
       summary:
@@ -474,6 +498,7 @@ app.locals.data = {
       date_created: "2014-02-01",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1920px-Vue.js_Logo_2.svg.png",
+      image2_url: "https://www.valuecoders.com/blog/wp-content/uploads/2021/06/Vue.js-Use-Cases-1-1024x343.jpg",
       use_cases: [
         "Interactive Web Interfaces",
         "Single Page Applications",
@@ -492,6 +517,7 @@ app.locals.data = {
       date_created: "2010-10-20",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png",
+      image2_url: "https://externlabs.com/blogs/wp-content/uploads/2021/11/angularjs-framework.jpg",
       use_cases: [
         "Large-scale Web Applications",
         "Single Page Applications",
@@ -510,6 +536,7 @@ app.locals.data = {
       date_created: "2015-11-09",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tensorflow_logo.svg/1920px-Tensorflow_logo.svg.png",
+      image2_url: "https://miro.medium.com/v2/resize:fit:1097/1*aLnKWrG41f1SbExs59Txmw.jpeg",
       use_cases: [
         "Deep Learning",
         "Machine Learning Models",
@@ -528,6 +555,7 @@ app.locals.data = {
       date_created: "2016-10-01",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Pytorch_logo.png/1200px-Pytorch_logo.png",
+      image2_url: "https://www.opensourceforu.com/wp-content/uploads/2023/02/PyTorch-1.jpg",
       use_cases: ["Deep Learning", "Neural Networks", "Computer Vision"],
       documentation_link: "https://pytorch.org/docs/stable/index.html",
       summary:
@@ -542,6 +570,7 @@ app.locals.data = {
       date_created: "1991-05-20",
       image_url:
         "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qt.svg",
+      image2_url: "https://lembergsolutions.com/sites/default/files/styles/metatags_large/public/2023-05/Why-choose-Qt%20framework-lemberg-solutions%20-%20meta%20Image.png?itok=rsEI5f5j",
       use_cases: [
         "Cross-platform Application Development",
         "GUI Development",
@@ -559,6 +588,7 @@ app.locals.data = {
       compatibilities: ["Go"],
       date_created: "2014-04-21",
       image_url: "https://assets-global.website-files.com/63f08f94fb9f06134f8c54eb/643f7baf66296a66bf2c1036_gin.png",
+      image2_url: "https://opengraph.githubassets.com/78a3a34cb342562aed5f22c68811ab9199ffb11282dfd61e48f495f0d4466a6f/gin-gonic/gin",
       use_cases: ["Web Development", "API Services", "Microservices"],
       documentation_link: "https://gin-gonic.com/docs/",
       summary:
@@ -573,6 +603,7 @@ app.locals.data = {
       date_created: "2012-05-02",
       image_url:
         "https://www.bacancytechnology.com/blog/wp-content/uploads/2022/12/Beego.webp",
+      image2_url: "https://i.morioh.com/210305/29518374.webp",
       use_cases: [
         "Web Applications",
         "API Development",
@@ -593,6 +624,7 @@ app.locals.data = {
       date_created: "1995-05-23",
       image_url:
         "https://d1.awsstatic.com/asset-repository/products/amazon-rds/1024px-MySQL.ff87215b43fd7292af172e2a5d9b844217262571.png",
+      image2_url: "https://assets-global.website-files.com/5aa7081220a301f2a3644f3b/5ad1034b0f7efded04f1567e_mysql.jpg",
       use_cases: [
         "Web Applications",
         "Content Management Systems",
@@ -611,6 +643,7 @@ app.locals.data = {
       date_created: "1996-07-08",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1920px-Postgresql_elephant.svg.png",
+      image2_url: "https://www.somoslibres.org/images/2022/07/12/postgresql.jpg",
       use_cases: [
         "Web Applications",
         "Geographic Information Systems",
@@ -629,6 +662,7 @@ app.locals.data = {
       date_created: "2009-02-11",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png",
+      image2_url: "https://www.loginradius.com/blog/static/504642ca3a1f7d78dea8509436faa4c6/701ee/cover.jpg",
       use_cases: [
         "Big Data",
         "Content Management Systems",
@@ -649,6 +683,7 @@ app.locals.data = {
       date_created: "2009-05-27",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png",
+      image2_url: "https://www.orientsoftware.com/Themes/OrientSoftwareTheme/Content/Images/blog/2024-01-23/node-js-glimpse.jpg",
       use_cases: ["Web Applications", "API Services", "Real-time Applications"],
       documentation_link: "https://nodejs.org/en/docs/",
       summary:
@@ -659,10 +694,11 @@ app.locals.data = {
       type: "Web Server",
       overall_type: "servers",
       creator: "Apache Software Foundation",
-      compatibilities: [],
+      compatibilities: ["Versatile range of technologies"],
       date_created: "1995-04-01",
       image_url:
         "https://www.apache.org/foundation/press/kit/asf_logo.png",
+      image2_url: "https://130e178e8f8ba617604b-8aedd782b7d22cfe0d1146da69a52436.ssl.cf1.rackcdn.com/apache-releases-update-for-leading-http-server-showcase_image-2-a-18208.jpg",
       use_cases: [
         "Hosting Websites",
         "Serving Static Content",
@@ -677,10 +713,11 @@ app.locals.data = {
       type: "Web Server",
       overall_type: "servers",
       creator: "Igor Sysoev",
-      compatibilities: [],
+      compatibilities: ["Versatile range of technologies"],
       date_created: "2004-10-04",
       image_url:
         "https://www.nginx.com/wp-content/uploads/2018/08/NGINX-logo-rgb-large.png",
+      image2_url: "https://i.ytimg.com/vi/D5grhfkjjXE/maxresdefault.jpg",
       use_cases: [
         "High-performance Websites",
         "Load Balancing",
@@ -695,10 +732,11 @@ app.locals.data = {
       type: "Web Server",
       overall_type: "servers",
       creator: "Microsoft",
-      compatibilities: [],
+      compatibilities: [".NET Framework", "C#"],
       date_created: "1995-12-06",
       image_url:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-vbOxSEhHPxjz4z3CrgzDUfXcx-wK4vGC-bP-OCUA1A&s",
+      image2_url: "https://miro.medium.com/v2/resize:fit:720/1*ICwnkhXZ_IOJREt1ut2TYA.png",
       use_cases: [
         "Hosting ASP.NET Applications",
         "Windows Server Integration",
@@ -713,10 +751,11 @@ app.locals.data = {
       type: "Containerization Platform",
       overall_type: "servers",
       creator: "Docker, Inc.",
-      compatibilities: [],
+      compatibilities: ["Any application"],
       date_created: "2013-03-20",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/1920px-Docker_%28container_engine%29_logo.svg.png",
+      image2_url: "https://miro.medium.com/v2/resize:fit:1400/0*Ju0B9aFR7AGUvc5s",
       use_cases: [
         "Containerization",
         "Microservices",
@@ -731,10 +770,11 @@ app.locals.data = {
       type: "Container Orchestration Platform",
       overall_type: "servers",
       creator: "Google",
-      compatibilities: [],
+      compatibilities: ["Docker"],
       date_created: "2014-06-07",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Kubernetes_logo.svg/1920px-Kubernetes_logo.svg.png",
+      image2_url: "https://miro.medium.com/v2/resize:fit:1400/1*SOhDdB1GYP_scqZTXoWC2g.png",
       use_cases: [
         "Container Orchestration",
         "Microservices Architecture",
@@ -749,10 +789,11 @@ app.locals.data = {
       type: "Servlet Container",
       overall_type: "servers",
       creator: "Apache Software Foundation",
-      compatibilities: [],
+      compatibilities: ["Java"],
       date_created: "1999-12-14",
       image_url:
         "https://webhostinggeeks.com/blog/wp-content/uploads/2023/05/Apache-Tomcat-Web-Server.png",
+      image2_url: "https://rhisac.org/wp-content/uploads/apachetomcat.jpg",
       use_cases: [
         "Java Servlets",
         "JavaServer Pages (JSP)",
@@ -771,6 +812,7 @@ app.locals.data = {
       date_created: "2010-12-10",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Ruby_On_Rails_Logo.svg/1200px-Ruby_On_Rails_Logo.svg.png",
+      image2_url: "https://repository-images.githubusercontent.com/2441517/7510b380-cfe5-11e9-8391-85577ac28ede",
       use_cases: ["Web Applications", "API Services", "Microservices"],
       documentation_link: "https://puma.io/",
       summary:
@@ -787,6 +829,7 @@ app.locals.data = {
       date_created: "2006-03-14",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1920px-Amazon_Web_Services_Logo.svg.png",
+      image2_url: "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_aws.jpg",
       use_cases: ["Cloud Computing", "Web Hosting", "Data Storage"],
       documentation_link: "https://docs.aws.amazon.com/",
       summary:
@@ -801,6 +844,7 @@ app.locals.data = {
       date_created: "2010-02-01",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/1920px-Microsoft_Azure_Logo.svg.png",
+      image2_url: "https://s3-prod.autonews.com/s3fs-public/micosoft-azure.png",
       use_cases: ["Cloud Computing", "App Hosting", "Big Data Analytics"],
       documentation_link: "https://docs.microsoft.com/en-us/azure/",
       summary:
@@ -815,6 +859,7 @@ app.locals.data = {
       date_created: "2008-04-07",
       image_url:
         "https://miro.medium.com/v2/resize:fit:1200/0*brH9cM9rnSRx2I-S.png",
+      image2_url: "https://images.shiksha.com/mediadata/shikshaOnline/mailers/2021/naukri-learning/dec/20dec/Google-Cloud-Platform.png",
       use_cases: ["Cloud Computing", "Data Storage", "Machine Learning"],
       documentation_link: "https://cloud.google.com/docs",
       summary:
