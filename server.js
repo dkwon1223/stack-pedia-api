@@ -1,9 +1,7 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
 app.use(cors());
-
-
 
 app.set("port", process.env.PORT || 8080);
 app.locals.title = "StackPedia API";
@@ -13,14 +11,45 @@ app.get("/", (request, response) => {
   response.send("Welcome to StackPedia API");
 });
 
-app.get("/api/v1/:category", (request, response) => {
-    const target = request.params.category;
-    const category = app.locals.data[target];
-    if(!category) {
-        response.sendStatus(404);
-    }
-    response.send(category);
-})
+app.get("/api/v1/technologies/all", (request, response) => {
+  const programmingLanguages = app.locals.data.languages;
+  const libraries = app.locals.data.libraries;
+  const frameworks = app.locals.data.frameworks;
+  const servers = app.locals.data.servers;
+  const databases = app.locals.data.databases;
+  const clouds = app.locals.data.clouds;
+
+  const all = programmingLanguages
+    .concat(libraries)
+    .concat(frameworks)
+    .concat(servers)
+    .concat(databases)
+    .concat(clouds);
+
+  response.send(all);
+});
+
+app.get("/api/v1/technologies/:category", (request, response) => {
+  const target = request.params.category;
+  const category = app.locals.data[target];
+  if (!category) {
+    response.sendStatus(404);
+  }
+  response.send(category);
+});
+
+app.get("/api/v1/technologies/:category/:name", (request, response) => {
+  const category = request.params.category;
+  const name = request.params.name.toLowerCase();
+  const targetTech = app.locals.data[category].find((tech) => {
+    return tech.name.toLowerCase() === name;
+  })
+  if (!targetTech) {
+    response.sendStatus(404);
+  }
+  response.send(targetTech);
+});
+
 
 app.listen(app.get("port"), () => {
   console.log(
@@ -29,15 +58,17 @@ app.listen(app.get("port"), () => {
 });
 
 app.locals.data = {
-  programming_languages: [
+  languages: [
     {
       name: "Python",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Guido van Rossum",
       compatibilities: ["Django", "Flask", "NumPy", "Pandas"],
       date_created: "1991-02-20",
       image_url:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png",
+      image2_url: "https://cdn.ourcodeworld.com/public-media/articles/articleocw-5c65fbda1ea05.jpg",
       use_cases: [
         "Web Development",
         "Data Analysis",
@@ -51,6 +82,7 @@ app.locals.data = {
     {
       name: "Java",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "James Gosling",
       compatibilities: ["Spring Boot", "Hibernate", "Apache Kafka"],
       date_created: "1995-05-23",
@@ -68,6 +100,7 @@ app.locals.data = {
     {
       name: "JavaScript",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Brendan Eich",
       compatibilities: ["React", "Angular", "Node.js"],
       date_created: "1995-12-04",
@@ -86,6 +119,7 @@ app.locals.data = {
     {
       name: "C++",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Bjarne Stroustrup",
       compatibilities: ["Qt", "Boost"],
       date_created: "1985-10-01",
@@ -103,6 +137,7 @@ app.locals.data = {
     {
       name: "Ruby",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Yukihiro Matsumoto",
       compatibilities: ["Ruby on Rails"],
       date_created: "1995-12-21",
@@ -116,6 +151,7 @@ app.locals.data = {
     {
       name: "Go",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Robert Griesemer, Rob Pike, Ken Thompson",
       compatibilities: ["Gin", "Beego"],
       date_created: "2009-11-10",
@@ -129,6 +165,7 @@ app.locals.data = {
     {
       name: "Swift",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Chris Lattner",
       compatibilities: ["UIKit", "SwiftUI"],
       date_created: "2014-06-02",
@@ -142,6 +179,7 @@ app.locals.data = {
     {
       name: "PHP",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Rasmus Lerdorf",
       compatibilities: ["Laravel", "Symfony"],
       date_created: "1994-06-08",
@@ -159,6 +197,7 @@ app.locals.data = {
     {
       name: "Rust",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Mozilla Research",
       compatibilities: ["Rocket", "Actix"],
       date_created: "2010-07-07",
@@ -172,23 +211,25 @@ app.locals.data = {
     {
       name: "Kotlin",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "JetBrains",
-      compatibilities: ["Spring Boot", "Android"],
+      compatibilities: ["Android", "Spring Boot", "Gradle"],
       date_created: "2011-07-20",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kotlin-logo.svg/1200px-Kotlin-logo.svg.png",
+        "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/kotlin.svg",
       use_cases: [
-        "Android Development",
-        "Web Development",
-        "Server-side Development",
+        "Android App Development",
+        "Backend Development",
+        "Cross-platform Development",
       ],
       documentation_link: "https://kotlinlang.org/docs/home.html",
       summary:
-        "Kotlin is a modern programming language developed by JetBrains for building reliable, scalable, and maintainable applications. It is interoperable with Java and widely used for Android app development and backend services.",
+        "Kotlin is a statically typed programming language developed by JetBrains. It is designed to interoperate fully with Java, making it a popular choice for Android app development and backend development. Kotlin offers concise syntax, null safety, and functional programming features.",
     },
     {
       name: "TypeScript",
       type: "Programming Language",
+      overall_type: "languages",
       creator: "Microsoft",
       compatibilities: ["React", "Angular"],
       date_created: "2012-10-01",
@@ -208,6 +249,7 @@ app.locals.data = {
     {
       name: "React",
       type: "JavaScript Library",
+      overall_type: "libraries",
       creator: "Facebook",
       compatibilities: ["JavaScript", "TypeScript"],
       date_created: "2013-05-29",
@@ -225,6 +267,7 @@ app.locals.data = {
     {
       name: "jQuery",
       type: "JavaScript Library",
+      overall_type: "libraries",
       creator: "John Resig",
       compatibilities: ["JavaScript"],
       date_created: "2006-08-26",
@@ -238,6 +281,7 @@ app.locals.data = {
     {
       name: "NumPy",
       type: "Python Library",
+      overall_type: "libraries",
       creator: "Travis Oliphant",
       compatibilities: ["Python"],
       date_created: "2006-08-26",
@@ -251,6 +295,7 @@ app.locals.data = {
     {
       name: "Pandas",
       type: "Python Library",
+      overall_type: "libraries",
       creator: "Wes McKinney",
       compatibilities: ["Python"],
       date_created: "2008-11-07",
@@ -264,11 +309,12 @@ app.locals.data = {
     {
       name: "Hibernate",
       type: "Java Library",
+      overall_type: "libraries",
       creator: "Gavin King",
       compatibilities: ["Java"],
       date_created: "2001-09-01",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Hibernate_logo_a.png/1920px-Hibernate_logo_a.png",
+        "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hibernate.svg",
       use_cases: [
         "Object-Relational Mapping",
         "Database Interaction",
@@ -281,25 +327,27 @@ app.locals.data = {
     {
       name: "Boost",
       type: "C++ Library",
+      overall_type: "libraries",
       creator: "Boris Schäling",
       compatibilities: ["C++"],
-      date_created: "2001-12-07",
+      date_created: "2001-01-01",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Boost_libraries_logo.svg/1920px-Boost_libraries_logo.svg.png",
+        "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/boost.svg",
       use_cases: [
-        "General-purpose C++ Programming",
-        "Library Development",
-        "High-performance Computing",
+        "General Purpose Programming",
+        "Advanced Data Structures",
+        "Concurrency",
       ],
-      documentation_link: "https://www.boost.org/doc/libs/",
+      documentation_link: "https://www.boost.org/doc/",
       summary:
-        "Boost is a set of libraries for the C++ programming language that provides support for tasks and structures such as linear algebra, pseudorandom number generation, multithreading, and more. It aims to extend the functionality of C++ and promote good practices.",
+        "Boost is a collection of free, peer-reviewed C++ libraries that provide support for tasks and structures such as linear algebra, pseudorandom number generation, multithreading, image processing, regular expressions, and unit testing. It is widely used in both open-source and commercial projects.",
     },
   ],
   frameworks: [
     {
       name: "Django",
       type: "Web Framework",
+      overall_type: "frameworks",
       creator: "Adrian Holovaty, Simon Willison",
       compatibilities: ["Python"],
       date_created: "2005-07-21",
@@ -313,6 +361,7 @@ app.locals.data = {
     {
       name: "Flask",
       type: "Web Framework",
+      overall_type: "frameworks",
       creator: "Armin Ronacher",
       compatibilities: ["Python"],
       date_created: "2010-04-01",
@@ -326,6 +375,7 @@ app.locals.data = {
     {
       name: "Spring Boot",
       type: "Java Framework",
+      overall_type: "frameworks",
       creator: "Pivotal Software",
       compatibilities: ["Java"],
       date_created: "2014-04-01",
@@ -344,6 +394,7 @@ app.locals.data = {
     {
       name: "Express.js",
       type: "Node.js Framework",
+      overall_type: "frameworks",
       creator: "TJ Holowaychuk",
       compatibilities: ["Node.js"],
       date_created: "2010-11-16",
@@ -357,6 +408,7 @@ app.locals.data = {
     {
       name: "Ruby on Rails",
       type: "Ruby Framework",
+      overall_type: "frameworks",
       creator: "David Heinemeier Hansson",
       compatibilities: ["Ruby"],
       date_created: "2004-12-13",
@@ -370,6 +422,7 @@ app.locals.data = {
     {
       name: "ASP.NET",
       type: "Framework",
+      overall_type: "frameworks",
       creator: "Microsoft",
       compatibilities: ["C#"],
       date_created: "2002-01-05",
@@ -387,6 +440,7 @@ app.locals.data = {
     {
       name: "Laravel",
       type: "PHP Framework",
+      overall_type: "frameworks",
       creator: "Taylor Otwell",
       compatibilities: ["PHP"],
       date_created: "2011-06-09",
@@ -400,23 +454,21 @@ app.locals.data = {
     {
       name: "Symfony",
       type: "PHP Framework",
+      overall_type: "frameworks",
       creator: "Fabien Potencier",
       compatibilities: ["PHP"],
       date_created: "2005-10-18",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Symfony_logo.svg/1920px-Symfony_logo.svg.png",
-      use_cases: [
-        "Web Development",
-        "Enterprise Applications",
-        "API Development",
-      ],
+        "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/symfony.svg",
+      use_cases: ["Web Applications", "RESTful APIs", "Microservices"],
       documentation_link: "https://symfony.com/doc/current/index.html",
       summary:
-        "Symfony is a high-performance PHP web application framework known for its flexibility, scalability, and reusability. It provides a set of reusable PHP components and libraries for building robust web applications.",
+        "Symfony is a PHP web application framework known for its modularity, scalability, and flexibility. It follows the model-view-controller (MVC) architectural pattern and provides a set of reusable PHP components for building web applications, RESTful APIs, and microservices.",
     },
     {
       name: "Vue.js",
       type: "JavaScript Framework",
+      overall_type: "frameworks",
       creator: "Evan You",
       compatibilities: ["JavaScript"],
       date_created: "2014-02-01",
@@ -434,6 +486,7 @@ app.locals.data = {
     {
       name: "Angular",
       type: "JavaScript Framework",
+      overall_type: "frameworks",
       creator: "Google",
       compatibilities: ["JavaScript", "TypeScript"],
       date_created: "2010-10-20",
@@ -451,6 +504,7 @@ app.locals.data = {
     {
       name: "TensorFlow",
       type: "Machine Learning Framework",
+      overall_type: "frameworks",
       creator: "Google Brain Team",
       compatibilities: ["Python", "JavaScript"],
       date_created: "2015-11-09",
@@ -468,6 +522,7 @@ app.locals.data = {
     {
       name: "PyTorch",
       type: "Machine Learning Framework",
+      overall_type: "frameworks",
       creator: "Facebook AI Research Lab",
       compatibilities: ["Python"],
       date_created: "2016-10-01",
@@ -481,41 +536,43 @@ app.locals.data = {
     {
       name: "Qt",
       type: "C++ Framework",
-      creator: "Trolltech",
+      overall_type: "frameworks",
+      creator: "Qt Company",
       compatibilities: ["C++"],
       date_created: "1991-05-20",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Qt_logo_2016.svg/1920px-Qt_logo_2016.svg.png",
+        "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qt.svg",
       use_cases: [
-        "Cross-platform Development",
-        "GUI Applications",
+        "Cross-platform Application Development",
+        "GUI Development",
         "Embedded Systems",
       ],
-      documentation_link: "https://doc.qt.io/qt-5/index.html",
+      documentation_link: "https://doc.qt.io/",
       summary:
-        "Qt is a cross-platform C++ framework for developing applications and user interfaces. It provides a comprehensive set of tools and libraries for building graphical user interfaces (GUIs) and multi-platform applications.",
+        "Qt is a comprehensive C++ framework used for developing cross-platform applications and graphical user interfaces (GUIs). It provides a set of tools, libraries, and APIs for building applications for desktop, mobile, and embedded systems. Qt is known for its ease of use, performance, and extensive documentation.",
     },
     {
       name: "Gin",
-      type: "Go Framework",
-      creator: "Manu Garg",
+      type: "Go Web Framework",
+      overall_type: "frameworks",
+      creator: "Manu Carusso",
       compatibilities: ["Go"],
-      date_created: "2014-03-02",
-      image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Go_Logo_Aqua.svg/1920px-Go_Logo_Aqua.svg.png",
-      use_cases: ["Web Services", "Microservices", "RESTful APIs"],
+      date_created: "2014-04-21",
+      image_url: "https://assets-global.website-files.com/63f08f94fb9f06134f8c54eb/643f7baf66296a66bf2c1036_gin.png",
+      use_cases: ["Web Development", "API Services", "Microservices"],
       documentation_link: "https://gin-gonic.com/docs/",
       summary:
-        "Gin is a web framework written in Go (Golang). It features a martini-like API with much better performance, up to 40 times faster. If you need smashing performance, get yourself some Gin.",
+        "Gin is a web framework written in Go (Golang). It features a Martini-like API with much better performance, up to 40 times faster. It's a great choice for building RESTful APIs and web services in Go with minimal overhead and high performance.",
     },
     {
       name: "Beego",
       type: "Go Framework",
+      overall_type: "frameworks",
       creator: "astaxie",
       compatibilities: ["Go"],
       date_created: "2012-05-02",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Go_Logo_Aqua.svg/1920px-Go_Logo_Aqua.svg.png",
+        "https://www.bacancytechnology.com/blog/wp-content/uploads/2022/12/Beego.webp",
       use_cases: [
         "Web Applications",
         "API Development",
@@ -530,11 +587,12 @@ app.locals.data = {
     {
       name: "MySQL",
       type: "Relational Database",
+      overall_type: "databases",
       creator: "MySQL AB",
       compatibilities: ["PHP", "Java", "Python"],
       date_created: "1995-05-23",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/6/62/MySQL.svg/1280px-MySQL.svg.png",
+        "https://d1.awsstatic.com/asset-repository/products/amazon-rds/1024px-MySQL.ff87215b43fd7292af172e2a5d9b844217262571.png",
       use_cases: [
         "Web Applications",
         "Content Management Systems",
@@ -547,6 +605,7 @@ app.locals.data = {
     {
       name: "PostgreSQL",
       type: "Relational Database",
+      overall_type: "databases",
       creator: "PostgreSQL Global Development Group",
       compatibilities: ["Python", "Ruby", "Java"],
       date_created: "1996-07-08",
@@ -564,11 +623,12 @@ app.locals.data = {
     {
       name: "MongoDB",
       type: "NoSQL Database",
+      overall_type: "databases",
       creator: "MongoDB Inc.",
       compatibilities: ["JavaScript", "Python", "Java"],
       date_created: "2009-02-11",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/4/45/MongoDB-Logo.svg/1920px-MongoDB-Logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png",
       use_cases: [
         "Big Data",
         "Content Management Systems",
@@ -583,6 +643,7 @@ app.locals.data = {
     {
       name: "Node.js",
       type: "Server-side JavaScript Runtime",
+      overall_type: "servers",
       creator: "Ryan Dahl",
       compatibilities: ["Express.js", "Socket.io"],
       date_created: "2009-05-27",
@@ -596,11 +657,12 @@ app.locals.data = {
     {
       name: "Apache HTTP Server",
       type: "Web Server",
+      overall_type: "servers",
       creator: "Apache Software Foundation",
       compatibilities: [],
       date_created: "1995-04-01",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Apache_HTTP_server_logo_%282016%29.svg/1280px-Apache_HTTP_server_logo_%282016%29.svg.png",
+        "https://www.apache.org/foundation/press/kit/asf_logo.png",
       use_cases: [
         "Hosting Websites",
         "Serving Static Content",
@@ -613,11 +675,12 @@ app.locals.data = {
     {
       name: "Nginx",
       type: "Web Server",
+      overall_type: "servers",
       creator: "Igor Sysoev",
       compatibilities: [],
       date_created: "2004-10-04",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/1920px-Nginx_logo.svg.png",
+        "https://www.nginx.com/wp-content/uploads/2018/08/NGINX-logo-rgb-large.png",
       use_cases: [
         "High-performance Websites",
         "Load Balancing",
@@ -630,11 +693,12 @@ app.locals.data = {
     {
       name: "Microsoft Internet Information Services (IIS)",
       type: "Web Server",
+      overall_type: "servers",
       creator: "Microsoft",
       compatibilities: [],
       date_created: "1995-12-06",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/IIS_10.0_Logo.svg/1280px-IIS_10.0_Logo.svg.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-vbOxSEhHPxjz4z3CrgzDUfXcx-wK4vGC-bP-OCUA1A&s",
       use_cases: [
         "Hosting ASP.NET Applications",
         "Windows Server Integration",
@@ -647,6 +711,7 @@ app.locals.data = {
     {
       name: "Docker",
       type: "Containerization Platform",
+      overall_type: "servers",
       creator: "Docker, Inc.",
       compatibilities: [],
       date_created: "2013-03-20",
@@ -664,6 +729,7 @@ app.locals.data = {
     {
       name: "Kubernetes",
       type: "Container Orchestration Platform",
+      overall_type: "servers",
       creator: "Google",
       compatibilities: [],
       date_created: "2014-06-07",
@@ -681,11 +747,12 @@ app.locals.data = {
     {
       name: "Apache Tomcat",
       type: "Servlet Container",
+      overall_type: "servers",
       creator: "Apache Software Foundation",
       compatibilities: [],
       date_created: "1999-12-14",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Tomcat-logo.svg/1920px-Tomcat-logo.svg.png",
+        "https://webhostinggeeks.com/blog/wp-content/uploads/2023/05/Apache-Tomcat-Web-Server.png",
       use_cases: [
         "Java Servlets",
         "JavaServer Pages (JSP)",
@@ -698,6 +765,7 @@ app.locals.data = {
     {
       name: "Ruby on Rails (Puma)",
       type: "Web Server",
+      overall_type: "servers",
       creator: "David Heinemeier Hansson, Evan Phoenix",
       compatibilities: ["Ruby on Rails"],
       date_created: "2010-12-10",
@@ -713,6 +781,7 @@ app.locals.data = {
     {
       name: "Amazon Web Services (AWS)",
       type: "Cloud Platform",
+      overall_type: "clouds",
       creator: "Amazon",
       compatibilities: ["Various Databases"],
       date_created: "2006-03-14",
@@ -726,6 +795,7 @@ app.locals.data = {
     {
       name: "Microsoft Azure",
       type: "Cloud Platform",
+      overall_type: "clouds",
       creator: "Microsoft",
       compatibilities: ["Various Databases"],
       date_created: "2010-02-01",
@@ -739,11 +809,12 @@ app.locals.data = {
     {
       name: "Google Cloud Platform (GCP)",
       type: "Cloud Platform",
+      overall_type: "clouds",
       creator: "Google",
       compatibilities: ["Various Databases"],
       date_created: "2008-04-07",
       image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Google_Cloud_Platform_Logo.svg/1920px-Google_Cloud_Platform_Logo.svg.png",
+        "https://miro.medium.com/v2/resize:fit:1200/0*brH9cM9rnSRx2I-S.png",
       use_cases: ["Cloud Computing", "Data Storage", "Machine Learning"],
       documentation_link: "https://cloud.google.com/docs",
       summary:
