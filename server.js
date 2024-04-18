@@ -913,7 +913,7 @@ app.locals.data = {
   stacks: [
     {
       name: "MERN Stack",
-      image_url: "mern_stack.png",
+      image_url: "https://almablog-media.s3.ap-south-1.amazonaws.com/MERN_Stack_9437df2ba9_62af1dd3fc.png",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "React", "Node.js"],
       benefits: [
@@ -929,7 +929,7 @@ app.locals.data = {
     },
     {
       name: "MEAN Stack",
-      image_url: "mean_stack.png",
+      image_url: "https://media.licdn.com/dms/image/D5612AQEFBusT1xvG7A/article-cover_image-shrink_600_2000/0/1690120721509?e=2147483647&v=beta&t=BfpKdXsXaRpWWciN4OjVs49zMd_P2LTBHRNpVBomqKE",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "Angular", "Node.js"],
       benefits: [
@@ -945,7 +945,7 @@ app.locals.data = {
     },
     {
       name: "LAMP Stack",
-      image_url: "lamp_stack.png",
+      image_url: "https://assets-global.website-files.com/622c950fafeaff443f77d857/635901fc4314c68586e2d056_lamp-stack-software-development.jpg",
       type: "fullstack",
       technologies: ["Linux", "Apache", "MySQL", "PHP"],
       benefits: [
@@ -961,7 +961,7 @@ app.locals.data = {
     },
     {
       name: "Django Stack",
-      image_url: "django_stack.png",
+      image_url: "https://www.fullstackpython.com/img/logos/django.png",
       type: "fullstack",
       technologies: ["Python", "Django", "Django REST Framework", "PostgreSQL"],
       benefits: [
@@ -977,7 +977,7 @@ app.locals.data = {
     },
     {
       name: "Ruby on Rails Stack",
-      image_url: "rails_stack.png",
+      image_url: "https://miro.medium.com/v2/resize:fit:1000/1*lEXUSkEm6M6kIHmKP9HtWg.png",
       type: "fullstack",
       technologies: ["Ruby", "Ruby on Rails", "SQLite", "JavaScript"],
       benefits: [
@@ -993,7 +993,7 @@ app.locals.data = {
     },
     {
       name: "MEVN Stack",
-      image_url: "mevn_stack.png",
+      image_url: "https://miro.medium.com/v2/resize:fit:1400/0*RCKYpm1OQHHX1EXV.jpg",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "Vue.js", "Node.js"],
       benefits: [
@@ -1009,7 +1009,7 @@ app.locals.data = {
     },
     {
       name: "React.js Stack",
-      image_url: "reactjs_stack.png",
+      image_url: "https://aboutreact.com/wp-content/uploads/2018/07/reactjs.png",
       type: "frontend",
       technologies: ["HTML", "CSS", "JavaScript", "React.js"],
       benefits: [
@@ -1025,7 +1025,7 @@ app.locals.data = {
     },
     {
       name: "AngularJS Stack",
-      image_url: "angularjs_stack.png",
+      image_url: "https://logowik.com/content/uploads/images/angular9826.logowik.com.webp",
       type: "frontend",
       technologies: ["HTML", "CSS", "JavaScript", "AngularJS"],
       benefits: [
@@ -1041,7 +1041,7 @@ app.locals.data = {
     },
     {
       name: "Vue.js Stack",
-      image_url: "vuejs_stack.png",
+      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbAC79bvJql_1mXufFEe5rWQC_fHwUw48wukFQjyQdEg&s",
       type: "frontend",
       technologies: ["HTML", "CSS", "JavaScript", "Vue.js"],
       benefits: [
@@ -1057,7 +1057,7 @@ app.locals.data = {
     },
     {
       name: "Spring Boot Stack",
-      image_url: "spring_boot_stack.png",
+      image_url: "https://spring.io/img/og-spring.png",
       type: "backend",
       technologies: ["Java", "Spring Boot", "Hibernate", "MySQL"],
       benefits: [
@@ -1073,7 +1073,7 @@ app.locals.data = {
     },
     {
       name: "ASP.NET Stack",
-      image_url: "aspnet_stack.png",
+      image_url: "https://softloomittraining.com/wp-content/uploads/2023/04/aspnet-benefits.png",
       type: "backend",
       technologies: ["C#", "ASP.NET", "Entity Framework", "SQL Server"],
       benefits: [
@@ -1089,7 +1089,7 @@ app.locals.data = {
     },
     {
       name: "Node.js Stack",
-      image_url: "nodejs_stack.png",
+      image_url: "https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.png",
       type: "backend",
       technologies: ["JavaScript", "Node.js", "Express.js", "MongoDB"],
       benefits: [
