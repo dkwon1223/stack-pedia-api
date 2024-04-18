@@ -50,6 +50,12 @@ app.get("/api/v1/technologies/:category/:name", (request, response) => {
   response.send(targetTech);
 });
 
+app.get("/api/v1/stacks/all", (request, response) => {
+  const all = app.locals.data.stacks
+
+  response.send(all);
+});
+
 app.listen(app.get("port"), () => {
   console.log(
     `${app.locals.title} is running on http://localhost:${app.get("port")}.`
