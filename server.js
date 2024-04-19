@@ -67,6 +67,21 @@ app.get("/api/v1/stacks/:type", (request, response) => {
   response.send(stacks);
 });
 
+app.get("/api/v1/stacks/:type/:name", (request, response) => {
+  const targetType = request.params.type;
+  const targetName = request.params.name.toLowerCase();
+  const targetGroup = app.locals.data.stacks.filter((stack) => {
+    return stack.type === targetType;
+  })
+  const targetStack = targetGroup.find((stack) => {
+    return stack.name.toLowerCase() === targetName;
+  })
+  if(!targetGroup || !targetStack) {
+    response.sendStatus(404);
+  }
+  response.send(targetStack)
+})
+
 app.listen(app.get("port"), () => {
   console.log(
     `${app.locals.title} is running on http://localhost:${app.get("port")}.`
@@ -925,6 +940,7 @@ app.locals.data = {
     {
       name: "MERN Stack",
       image_url: "https://almablog-media.s3.ap-south-1.amazonaws.com/MERN_Stack_9437df2ba9_62af1dd3fc.png",
+      image2_url: "https://nitsantech.com/fileadmin/ns_theme_ns2019/blog/_live/What_is_the_MERN_stack_and_how_do_I_use_it_/What_is_the_MERN_stack_and_how_do_I_use_it.jpg",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "React", "Node.js"],
       benefits: [
@@ -942,6 +958,7 @@ app.locals.data = {
     {
       name: "MEAN Stack",
       image_url: "https://media.licdn.com/dms/image/D5612AQEFBusT1xvG7A/article-cover_image-shrink_600_2000/0/1690120721509?e=2147483647&v=beta&t=BfpKdXsXaRpWWciN4OjVs49zMd_P2LTBHRNpVBomqKE",
+      image2_url: "https://www.weblineindia.com/wp-content/uploads/2016/12/mean-stack-1.jpg",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "Angular", "Node.js"],
       benefits: [
@@ -959,6 +976,7 @@ app.locals.data = {
     {
       name: "LAMP Stack",
       image_url: "https://assets-global.website-files.com/622c950fafeaff443f77d857/635901fc4314c68586e2d056_lamp-stack-software-development.jpg",
+      image2_url: "https://cdn.servermania.com/images/f_webp,q_auto:best/v1681848708/blog/What-is-a-LAMP-Stack-1/What-is-a-LAMP-Stack-1.png?_i=AA",
       type: "fullstack",
       technologies: ["Linux", "Apache", "MySQL", "PHP"],
       benefits: [
@@ -976,6 +994,7 @@ app.locals.data = {
     {
       name: "Django Stack",
       image_url: "https://www.fullstackpython.com/img/logos/django.png",
+      image2_url: "https://media.licdn.com/dms/image/D5622AQGoT1AN_pEcRw/feedshare-shrink_2048_1536/0/1701678392003?e=2147483647&v=beta&t=8MA9cAXfU3ViGo-d1zAon-9_fIVdoVb0aZ0r1daEF0c",
       type: "fullstack",
       technologies: ["Python", "Django", "Django REST Framework", "PostgreSQL"],
       benefits: [
@@ -993,6 +1012,7 @@ app.locals.data = {
     {
       name: "Ruby on Rails Stack",
       image_url: "https://miro.medium.com/v2/resize:fit:1000/1*lEXUSkEm6M6kIHmKP9HtWg.png",
+      image2_url: "https://www.emizentech.com/blog/wp-content/uploads/sites/2/2022/07/What-is-Rails-or-Ruby-on-Rails--scaled.jpg",
       type: "fullstack",
       technologies: ["Ruby", "Ruby on Rails", "SQLite", "JavaScript"],
       benefits: [
@@ -1010,6 +1030,7 @@ app.locals.data = {
     {
       name: "MEVN Stack",
       image_url: "https://miro.medium.com/v2/resize:fit:1400/0*RCKYpm1OQHHX1EXV.jpg",
+      image2_url: "https://i.morioh.com/2020/04/27/a7f06a3c5568.jpg",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "Vue.js", "Node.js"],
       benefits: [
@@ -1027,6 +1048,7 @@ app.locals.data = {
     {
       name: "React.js Stack",
       image_url: "https://aboutreact.com/wp-content/uploads/2018/07/reactjs.png",
+      image2_url: "https://ih1.redbubble.net/image.1468562064.1834/poster,840x830,f8f8f8-pad,1000x1000,f8f8f8.jpg",
       type: "frontend",
       technologies: ["HTML", "CSS", "JavaScript", "React.js"],
       benefits: [
@@ -1044,6 +1066,7 @@ app.locals.data = {
     {
       name: "Angular Stack",
       image_url: "https://logowik.com/content/uploads/images/angular9826.logowik.com.webp",
+      image2_url: "https://img-c.udemycdn.com/course/750x422/3543810_90d3.jpg",
       type: "frontend",
       technologies: ["HTML", "CSS", "JavaScript", "Angular"],
       benefits: [
@@ -1061,6 +1084,7 @@ app.locals.data = {
     {
       name: "Vue.js Stack",
       image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbAC79bvJql_1mXufFEe5rWQC_fHwUw48wukFQjyQdEg&s",
+      image2_url: "https://ih1.redbubble.net/image.1468578427.2169/tst,large,507x507-pad,600x600,f8f8f8.webp",
       type: "frontend",
       technologies: ["HTML", "CSS", "JavaScript", "Vue.js"],
       benefits: [
@@ -1078,6 +1102,7 @@ app.locals.data = {
     {
       name: "Spring Boot Stack",
       image_url: "https://spring.io/img/og-spring.png",
+      image2_url: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/279942988/original/eeffed4e29d80691e24def06f1cfdc2bef64cede/create-rest-api-spring-boot-and-spring-mvc-projects.png",
       type: "backend",
       technologies: ["Java", "Spring Boot", "Hibernate", "MySQL"],
       benefits: [
@@ -1095,6 +1120,7 @@ app.locals.data = {
     {
       name: "ASP.NET Stack",
       image_url: "https://softloomittraining.com/wp-content/uploads/2023/04/aspnet-benefits.png",
+      image2_url: "https://www.aceinfoway.com/blog/wp-content/uploads/2020/05/top-5-benefits-of-using-aspnet-core.jpg",
       type: "backend",
       technologies: ["C#", "ASP.NET", "Entity Framework", "SQL Server"],
       benefits: [
@@ -1112,6 +1138,7 @@ app.locals.data = {
     {
       name: "Node.js Stack",
       image_url: "https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.png",
+      image2_url: "https://miro.medium.com/v2/resize:fit:600/0*_PPcWzOsiq8Imzff.jpg",
       type: "backend",
       technologies: ["JavaScript", "Node.js", "Express.js", "MongoDB"],
       benefits: [
