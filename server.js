@@ -56,6 +56,17 @@ app.get("/api/v1/stacks/all", (request, response) => {
   response.send(all);
 });
 
+app.get("/api/v1/stacks/:type", (request, response) => {
+  const targetType = request.params.type;
+  const stacks = app.locals.data.stacks.filter((stack) => {
+    return stack.type === targetType;
+  })
+  if(!stacks) {
+    response.sendStatus(404);
+  }
+  response.send(stacks);
+});
+
 app.listen(app.get("port"), () => {
   console.log(
     `${app.locals.title} is running on http://localhost:${app.get("port")}.`
