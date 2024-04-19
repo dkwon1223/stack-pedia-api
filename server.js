@@ -40,7 +40,7 @@ app.get("/api/v1/technologies/:category", (request, response) => {
 
 app.get("/api/v1/technologies/:category/:name", (request, response) => {
   const category = request.params.category;
-  const name = request.params.name.toLowerCase();
+  const name = request.params.name.toLowerCase().replace("-", " ");
   const targetTech = app.locals.data[category].find((tech) => {
     return tech.name.toLowerCase() === name;
   });
@@ -69,7 +69,7 @@ app.get("/api/v1/stacks/:type", (request, response) => {
 
 app.get("/api/v1/stacks/:type/:name", (request, response) => {
   const targetType = request.params.type;
-  const targetName = request.params.name.toLowerCase();
+  const targetName = request.params.name.toLowerCase().replace("-", " ");
   const targetGroup = app.locals.data.stacks.filter((stack) => {
     return stack.type === targetType;
   })
