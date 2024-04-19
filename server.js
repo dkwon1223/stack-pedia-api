@@ -56,6 +56,32 @@ app.get("/api/v1/stacks/all", (request, response) => {
   response.send(all);
 });
 
+app.get("/api/v1/stacks/:type", (request, response) => {
+  const targetType = request.params.type;
+  const stacks = app.locals.data.stacks.filter((stack) => {
+    return stack.type === targetType;
+  })
+  if(!stacks) {
+    response.sendStatus(404);
+  }
+  response.send(stacks);
+});
+
+app.get("/api/v1/stacks/:type/:name", (request, response) => {
+  const targetType = request.params.type;
+  const targetName = request.params.name.toLowerCase();
+  const targetGroup = app.locals.data.stacks.filter((stack) => {
+    return stack.type === targetType;
+  })
+  const targetStack = targetGroup.find((stack) => {
+    return stack.name.toLowerCase() === targetName;
+  })
+  if(!targetGroup || !targetStack) {
+    response.sendStatus(404);
+  }
+  response.send(targetStack)
+})
+
 app.listen(app.get("port"), () => {
   console.log(
     `${app.locals.title} is running on http://localhost:${app.get("port")}.`
@@ -913,7 +939,8 @@ app.locals.data = {
   stacks: [
     {
       name: "MERN Stack",
-      image_url: "mern_stack.png",
+      image_url: "https://almablog-media.s3.ap-south-1.amazonaws.com/MERN_Stack_9437df2ba9_62af1dd3fc.png",
+      image2_url: "https://nitsantech.com/fileadmin/ns_theme_ns2019/blog/_live/What_is_the_MERN_stack_and_how_do_I_use_it_/What_is_the_MERN_stack_and_how_do_I_use_it.jpg",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "React", "Node.js"],
       benefits: [
@@ -926,10 +953,13 @@ app.locals.data = {
         "Steep learning curve for beginners",
       ],
       companies: ["Facebook", "Netflix", "Airbnb"],
+      summary: "The MERN (MongoDB, Express.js, React, Node.js) stack is a fullstack JavaScript framework, featuring MongoDB for the database, Express.js for the backend framework, React for the frontend library, and Node.js for the JavaScript runtime environment.",
+      learn_link: "https://www.mongodb.com/mern-stack"
     },
     {
       name: "MEAN Stack",
-      image_url: "mean_stack.png",
+      image_url: "https://media.licdn.com/dms/image/D5612AQEFBusT1xvG7A/article-cover_image-shrink_600_2000/0/1690120721509?e=2147483647&v=beta&t=BfpKdXsXaRpWWciN4OjVs49zMd_P2LTBHRNpVBomqKE",
+      image2_url: "https://www.weblineindia.com/wp-content/uploads/2016/12/mean-stack-1.jpg",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "Angular", "Node.js"],
       benefits: [
@@ -942,10 +972,13 @@ app.locals.data = {
         "Lack of mature libraries and tools compared to other stacks",
       ],
       companies: ["Google", "Uber", "PayPal"],
+      summary: "The MEAN (MongoDB, Express.js, Angular, Node.js) stack is a fullstack JavaScript framework, comprising MongoDB for the database, Express.js for the backend framework, Angular for the frontend framework, and Node.js for the JavaScript runtime environment.",
+      learn_link: "https://www.ibm.com/topics/mean-stack"
     },
     {
       name: "LAMP Stack",
-      image_url: "lamp_stack.png",
+      image_url: "https://assets-global.website-files.com/622c950fafeaff443f77d857/635901fc4314c68586e2d056_lamp-stack-software-development.jpg",
+      image2_url: "https://cdn.servermania.com/images/f_webp,q_auto:best/v1681848708/blog/What-is-a-LAMP-Stack-1/What-is-a-LAMP-Stack-1.png?_i=AA",
       type: "fullstack",
       technologies: ["Linux", "Apache", "MySQL", "PHP"],
       benefits: [
@@ -958,10 +991,13 @@ app.locals.data = {
         "Security vulnerabilities if not configured properly",
       ],
       companies: ["WordPress", "Yahoo", "Flickr"],
+      summary: "The LAMP (Linux, Apache, MySQL, PHP) stack is a widely adopted open-source web development stack. It includes Linux as the operating system, Apache as the web server, MySQL as the relational database management system, and PHP as the server-side scripting language.",
+      learn_link: "https://www.ibm.com/topics/lamp-stack"
     },
     {
       name: "Django Stack",
-      image_url: "django_stack.png",
+      image_url: "https://www.fullstackpython.com/img/logos/django.png",
+      image2_url: "https://media.licdn.com/dms/image/D5622AQGoT1AN_pEcRw/feedshare-shrink_2048_1536/0/1701678392003?e=2147483647&v=beta&t=8MA9cAXfU3ViGo-d1zAon-9_fIVdoVb0aZ0r1daEF0c",
       type: "fullstack",
       technologies: ["Python", "Django", "Django REST Framework", "PostgreSQL"],
       benefits: [
@@ -974,10 +1010,13 @@ app.locals.data = {
         "Learning curve for newcomers to Python",
       ],
       companies: ["Instagram", "Spotify", "Pinterest"],
+      summary: "The Django stack is a robust full-stack framework built on Python, comprising Django for the backend framework, Django REST Framework for building RESTful APIs, and PostgreSQL for the relational database.",
+      learn_link: "https://dev.to/koladev/building-a-fullstack-application-with-django-django-rest-nextjs-3e26"
     },
     {
       name: "Ruby on Rails Stack",
-      image_url: "rails_stack.png",
+      image_url: "https://miro.medium.com/v2/resize:fit:1000/1*lEXUSkEm6M6kIHmKP9HtWg.png",
+      image2_url: "https://www.emizentech.com/blog/wp-content/uploads/sites/2/2022/07/What-is-Rails-or-Ruby-on-Rails--scaled.jpg",
       type: "fullstack",
       technologies: ["Ruby", "Ruby on Rails", "SQLite", "JavaScript"],
       benefits: [
@@ -990,10 +1029,13 @@ app.locals.data = {
         "Not suitable for CPU-intensive tasks",
       ],
       companies: ["GitHub", "Basecamp", "Airbnb"],
+      summary: "The Ruby on Rails stack is a powerful full-stack framework built on Ruby, featuring Rails for the backend framework and SQLite for the database.",
+      learn_link: "https://careerfoundry.com/en/blog/web-development/should-i-learn-ruby-on-rails/"
     },
     {
       name: "MEVN Stack",
-      image_url: "mevn_stack.png",
+      image_url: "https://miro.medium.com/v2/resize:fit:1400/0*RCKYpm1OQHHX1EXV.jpg",
+      image2_url: "https://i.morioh.com/2020/04/27/a7f06a3c5568.jpg",
       type: "fullstack",
       technologies: ["MongoDB", "Express.js", "Vue.js", "Node.js"],
       benefits: [
@@ -1006,10 +1048,13 @@ app.locals.data = {
         "Potential performance bottlenecks with MongoDB",
       ],
       companies: ["Codeship", "IBM", "Hulu"],
+      summary: "The MEVN (MongoDB, Express.js, Vue.js, Node.js) stack is a modern full-stack JavaScript framework, comprising MongoDB for the database, Express.js for the backend framework, Vue.js for the frontend framework, and Node.js for the JavaScript runtime environment.",
+      learn_link: "https://medium.com/@empiricinfotech/mevn-tech-stack-everything-you-need-to-know-4e6140731890"
     },
     {
       name: "React.js Stack",
-      image_url: "reactjs_stack.png",
+      image_url: "https://aboutreact.com/wp-content/uploads/2018/07/reactjs.png",
+      image2_url: "https://ih1.redbubble.net/image.1468562064.1834/poster,840x830,f8f8f8-pad,1000x1000,f8f8f8.jpg",
       type: "frontend",
       technologies: ["HTML", "CSS", "JavaScript", "React.js"],
       benefits: [
@@ -1022,12 +1067,15 @@ app.locals.data = {
         "Requires additional libraries for state management and routing",
       ],
       companies: ["Facebook", "Instagram", "WhatsApp"],
+      summary: "The React.js frontend stack revolves around React, a JavaScript library for building user interfaces. It utilizes HTML, CSS, and JavaScript, with React.js as the core technology.",
+      learn_link: "https://brainhub.eu/library/what-is-react"
     },
     {
-      name: "AngularJS Stack",
-      image_url: "angularjs_stack.png",
+      name: "Angular Stack",
+      image_url: "https://logowik.com/content/uploads/images/angular9826.logowik.com.webp",
+      image2_url: "https://img-c.udemycdn.com/course/750x422/3543810_90d3.jpg",
       type: "frontend",
-      technologies: ["HTML", "CSS", "JavaScript", "AngularJS"],
+      technologies: ["HTML", "CSS", "JavaScript", "Angular"],
       benefits: [
         "Two-way data binding for real-time updates",
         "Modular and reusable components",
@@ -1038,10 +1086,13 @@ app.locals.data = {
         "Less flexibility compared to newer frameworks like React",
       ],
       companies: ["Netflix", "Weather.com", "Freelancer"],
+      summary: "The Angular frontend stack centers around Angular, a TypeScript-based framework for building web applications. It encompasses HTML, CSS, JavaScript/TypeScript, and Angular as the primary technologies.",
+      learn_link: "https://angular.io/guide/what-is-angular"
     },
     {
       name: "Vue.js Stack",
-      image_url: "vuejs_stack.png",
+      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbAC79bvJql_1mXufFEe5rWQC_fHwUw48wukFQjyQdEg&s",
+      image2_url: "https://ih1.redbubble.net/image.1468578427.2169/tst,large,507x507-pad,600x600,f8f8f8.webp",
       type: "frontend",
       technologies: ["HTML", "CSS", "JavaScript", "Vue.js"],
       benefits: [
@@ -1054,10 +1105,13 @@ app.locals.data = {
         "Limited scalability for large projects",
       ],
       companies: ["Adobe", "GitLab", "Upwork"],
+      summary: "The Vue.js frontend stack revolves around Vue.js, a progressive JavaScript framework for building user interfaces. It includes HTML, CSS, JavaScript, and Vue.js as the core technologies.",
+      learn_link: "https://vuejs.org/guide/introduction.html"
     },
     {
       name: "Spring Boot Stack",
-      image_url: "spring_boot_stack.png",
+      image_url: "https://spring.io/img/og-spring.png",
+      image2_url: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/279942988/original/eeffed4e29d80691e24def06f1cfdc2bef64cede/create-rest-api-spring-boot-and-spring-mvc-projects.png",
       type: "backend",
       technologies: ["Java", "Spring Boot", "Hibernate", "MySQL"],
       benefits: [
@@ -1070,10 +1124,13 @@ app.locals.data = {
         "Steep learning curve for beginners",
       ],
       companies: ["LinkedIn", "Netflix", "Alibaba"],
+      summary: "The Spring Boot backend stack is built on Java and Spring Boot, providing a robust framework for developing enterprise-level applications. It leverages Java, Spring Boot, Hibernate, and MySQL as its core technologies.",
+      learn_link: "https://spring.io/projects/spring-boot"
     },
     {
       name: "ASP.NET Stack",
-      image_url: "aspnet_stack.png",
+      image_url: "https://softloomittraining.com/wp-content/uploads/2023/04/aspnet-benefits.png",
+      image2_url: "https://www.aceinfoway.com/blog/wp-content/uploads/2020/05/top-5-benefits-of-using-aspnet-core.jpg",
       type: "backend",
       technologies: ["C#", "ASP.NET", "Entity Framework", "SQL Server"],
       benefits: [
@@ -1086,10 +1143,13 @@ app.locals.data = {
         "Less flexibility compared to open-source alternatives",
       ],
       companies: ["Microsoft", "Stack Overflow", "GoDaddy"],
+      summary: "The ASP.NET backend stack is a comprehensive framework for building robust web applications, developed by Microsoft. It utilizes C#, ASP.NET, Entity Framework, and SQL Server as its primary technologies.",
+      learn_link: "https://dotnet.microsoft.com/en-us/apps/aspnet"
     },
     {
       name: "Node.js Stack",
-      image_url: "nodejs_stack.png",
+      image_url: "https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.png",
+      image2_url: "https://miro.medium.com/v2/resize:fit:600/0*_PPcWzOsiq8Imzff.jpg",
       type: "backend",
       technologies: ["JavaScript", "Node.js", "Express.js", "MongoDB"],
       benefits: [
@@ -1102,6 +1162,8 @@ app.locals.data = {
         "Less suitable for CPU-bound tasks",
       ],
       companies: ["Netflix", "PayPal", "Uber"],
+      summary: "The Node.js backend stack is a powerful JavaScript runtime environment for building scalable and efficient server-side applications. It utilizes JavaScript, Node.js, Express.js, and MongoDB as its core technologies.",
+      learn_link: "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
     },
   ],
 };
