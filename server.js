@@ -6,11 +6,12 @@ app.use(cors());
 app.use(express.json());
 
 const mongoose = require("mongoose");
+const { ObjectId } = require("mongodb");
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING)
 const db = mongoose.connection
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
-const Tech = require("./models/Tech");
+
 
 app.set("port", process.env.PORT || 8080);
 app.locals.title = "StackPedia API";
@@ -52,16 +53,14 @@ app.get("/api/v1/technologies/:category", async (request, response) => {
 });
 
 // GET SINGLE TECH
-app.get("/api/v1/technology/:name", async (request, response) => {
-  const name = request.params.name.toLowerCase().replace("-", " ");
-  function capitalizeWords(str) {
-    return str.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-  }
-  const searchName = capitalizeWords(name);
-  
+app.get("/api/v1/technology/:id", async (request, response) => {
+  const targetId = request.params.id;
   try {
-    const tech = await db.db.collection("technologies").findOne({ name: `${searchName}` })
-    response.status(200).json(tech);
+    const stack = await db.collection("technologies").findOne({ _id: ObjectId.createFromHexString(targetId) })
+    if(!stack) {
+      return response.status(404).json({ error: "Document not found" })
+    }
+    response.status(200).json(stack);
   } catch(error) {
     console.error("Error retrieving documents:", error)
     response.status(500).json({error: "Internal server error"})
@@ -69,38 +68,42 @@ app.get("/api/v1/technology/:name", async (request, response) => {
 });
 
 // GET ALL STACKS
-app.get("/api/v1/stacks/all", (request, response) => {
-  const all = app.locals.data.stacks
-
-  response.send(all);
+app.get("/api/v1/stacks/all", async (request, response) => {
+  try {
+    const stacks = await db.db.collection("stacks").find({}).toArray();
+    response.status(200).json(stacks);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
+  }
 });
 
 // GET STACKS BY TYPE
-app.get("/api/v1/stacks/:type", (request, response) => {
+app.get("/api/v1/stacks/:type", async (request, response) => {
   const targetType = request.params.type;
-  const stacks = app.locals.data.stacks.filter((stack) => {
-    return stack.type === targetType;
-  })
-  if(!stacks) {
-    response.sendStatus(404);
+ 
+  try {
+    const stacks = await db.db.collection("stacks").find({ type: `${targetType}` }).toArray();
+    response.status(200).json(stacks);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
   }
-  response.send(stacks);
 });
 
 // GET SINGLE STACK
-app.get("/api/v1/stacks/:type/:name", (request, response) => {
-  const targetType = request.params.type;
-  const targetName = request.params.name.toLowerCase().replace("-", " ");
-  const targetGroup = app.locals.data.stacks.filter((stack) => {
-    return stack.type === targetType;
-  })
-  const targetStack = targetGroup.find((stack) => {
-    return stack.name.toLowerCase() === targetName;
-  })
-  if(!targetGroup || !targetStack) {
-    response.sendStatus(404);
+app.get("/api/v1/stack/:id", async (request, response) => {
+  const targetId = request.params.id;
+  try {
+    const stack = await db.collection("stacks").findOne({ _id: ObjectId.createFromHexString(targetId) })
+    if(!stack) {
+      return response.status(404).json({ error: "Document not found" })
+    }
+    response.status(200).json(stack);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
   }
-  response.send(targetStack)
 })
 
 
