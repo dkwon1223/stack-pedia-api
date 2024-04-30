@@ -38,3 +38,5 @@ const StackSchema = mongoose.Schema({
         required: true
     }
 })
+
+module.exports = mongoose.model("Stack", StackSchema);

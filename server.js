@@ -1,18 +1,19 @@
 const express = require("express");
-const app = express();
-
 const cors = require("cors");
-app.use(cors());
-
-app.use(express.json());
-
 require("dotenv").config();
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING)
 const db = mongoose.connection
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
+const Tech = require("./models/Tech");
+
+app.set("port", process.env.PORT || 8080);
+app.locals.title = "StackPedia API";
 
 app.listen(app.get("port"), () => {
   console.log(
@@ -20,55 +21,51 @@ app.listen(app.get("port"), () => {
   );
 });
 
-app.set("port", process.env.PORT || 8080);
-app.locals.title = "StackPedia API";
-
-
 // GET HOME
 app.get("/", (request, response) => {
   response.send("Welcome to StackPedia API");
 });
 
 // GET ALL TECHS
-app.get("/api/v1/technologies/all", (request, response) => {
-  const programmingLanguages = app.locals.data.languages;
-  const libraries = app.locals.data.libraries;
-  const frameworks = app.locals.data.frameworks;
-  const servers = app.locals.data.servers;
-  const databases = app.locals.data.databases;
-  const clouds = app.locals.data.clouds;
+app.get("/api/v1/technologies/all", async (request, response) => {
 
-  const all = programmingLanguages
-    .concat(libraries)
-    .concat(frameworks)
-    .concat(servers)
-    .concat(databases)
-    .concat(clouds);
-
-  response.send(all);
+  try {
+    const techs = await db.db.collection("technologies").find({}).toArray();
+    response.status(200).json(techs);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
+  }
 });
 
 // GET TECH BY CATEGORY
-app.get("/api/v1/technologies/:category", (request, response) => {
+app.get("/api/v1/technologies/:category", async (request, response) => {
   const target = request.params.category;
-  const category = app.locals.data[target];
-  if (!category) {
-    response.sendStatus(404);
+
+  try {
+    const techs = await db.db.collection("technologies").find({ overall_type: `${target}` }).toArray();
+    response.status(200).json(techs);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
   }
-  response.send(category);
 });
 
 // GET SINGLE TECH
-app.get("/api/v1/technologies/:category/:name", (request, response) => {
-  const category = request.params.category;
+app.get("/api/v1/technology/:name", async (request, response) => {
   const name = request.params.name.toLowerCase().replace("-", " ");
-  const targetTech = app.locals.data[category].find((tech) => {
-    return tech.name.toLowerCase() === name;
-  });
-  if (!targetTech) {
-    response.sendStatus(404);
+  function capitalizeWords(str) {
+    return str.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
   }
-  response.send(targetTech);
+  const searchName = capitalizeWords(name);
+  
+  try {
+    const tech = await db.db.collection("technologies").findOne({ name: `${searchName}` })
+    response.status(200).json(tech);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
+  }
 });
 
 // GET ALL STACKS
