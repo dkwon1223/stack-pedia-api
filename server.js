@@ -4,16 +4,15 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
+app.use(express.json());
+
 require("dotenv").config();
 
 const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {useNewUrlParser: true})
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING)
 const db = mongoose.connection
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
-
-app.set("port", process.env.PORT || 8080);
-app.locals.title = "StackPedia API";
 
 app.listen(app.get("port"), () => {
   console.log(
@@ -21,11 +20,16 @@ app.listen(app.get("port"), () => {
   );
 });
 
+app.set("port", process.env.PORT || 8080);
+app.locals.title = "StackPedia API";
+
+
 // GET HOME
 app.get("/", (request, response) => {
   response.send("Welcome to StackPedia API");
 });
 
+// GET ALL TECHS
 app.get("/api/v1/technologies/all", (request, response) => {
   const programmingLanguages = app.locals.data.languages;
   const libraries = app.locals.data.libraries;
@@ -44,6 +48,7 @@ app.get("/api/v1/technologies/all", (request, response) => {
   response.send(all);
 });
 
+// GET TECH BY CATEGORY
 app.get("/api/v1/technologies/:category", (request, response) => {
   const target = request.params.category;
   const category = app.locals.data[target];
@@ -53,6 +58,7 @@ app.get("/api/v1/technologies/:category", (request, response) => {
   response.send(category);
 });
 
+// GET SINGLE TECH
 app.get("/api/v1/technologies/:category/:name", (request, response) => {
   const category = request.params.category;
   const name = request.params.name.toLowerCase().replace("-", " ");
@@ -65,12 +71,14 @@ app.get("/api/v1/technologies/:category/:name", (request, response) => {
   response.send(targetTech);
 });
 
+// GET ALL STACKS
 app.get("/api/v1/stacks/all", (request, response) => {
   const all = app.locals.data.stacks
 
   response.send(all);
 });
 
+// GET STACKS BY TYPE
 app.get("/api/v1/stacks/:type", (request, response) => {
   const targetType = request.params.type;
   const stacks = app.locals.data.stacks.filter((stack) => {
@@ -82,6 +90,7 @@ app.get("/api/v1/stacks/:type", (request, response) => {
   response.send(stacks);
 });
 
+// GET SINGLE STACK
 app.get("/api/v1/stacks/:type/:name", (request, response) => {
   const targetType = request.params.type;
   const targetName = request.params.name.toLowerCase().replace("-", " ");
