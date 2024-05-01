@@ -24,13 +24,20 @@ This application is the back-end server for the [StackPedia](https://github.com/
 
 | url | verb | options | sample response |
 | ----|------|---------|---------------- |
-| `http://localhost:8080/api/v1/drinks` | GET | not needed | Array of all existing reservations: `[{ id: 5, name: 'Campari Orange', ingredients: {...}, directions: {...}, alcoholic: true, isFavorite: false, image: <url> created_at: <dateString>, updated_at: <dateString> }, {<moreDrinkObjects>}, ...]` |
-| `http://localhost:10000/api/v1/drinks/:id` | GET | not needed | Single Drink(by id): `{ id: 5, name: 'Campari Orange', ingredients: {...}, directions: {...}, alcoholic: true, isFavorite: false, image: <url> created_at: <dateString>, updated_at: <dateString> }` |
-
+| `http://localhost:8080/api/v1/technologies/all` | GET | not needed | Array of all existing technologies: `[{ _id: 5, name: 'Python', type: 'Programming Language'...}, {_id: 6, name: "Java", type: "Programming Language"...}, ... ]` |
+| `http://localhost:8080/api/v1/technologies/:category` | GET | not needed | Array of technologies sorted by category: `[{overall_type: <category>}, {overall_type: <category>}... ]` |
+| `http://localhost:8080/api/v1/technology/:id` | GET | not needed | Single technology by id: `{_id: <id>}` |
+| `http://localhost:8080/api/v1/stacks/all` | GET | not needed | Array of all existing stacks: `[{ _id: 5, name: 'MERN Stack', type: 'fullstack'...}, {_id: 6, name: "LAMP Stack", type: "fullstack"...}, ... ]` |
+| `http://localhost:8080/api/v1/stacks/:type` | GET | not needed | Array of stacks sorted by category: `[{overall_type: <category>}, {overall_type: <category>}... ]` |
+| `http://localhost:8080/api/v1/stack/:id` | GET | not needed | Single stack by id: `{_id: <id>}` |
 
 ### Endpoints for Deployed Server(used in the front end application)
 
 | url | verb | options | sample response |
 | ----|------|---------|---------------- |
-| `https://mix-master-api.onrender.com/api/v1/drinks` | GET | not needed | Array of all existing reservations: `[{ id: 5, name: 'Campari Orange', ingredients: {...}, directions: {...}, alcoholic: true, isFavorite: false, image: <url> created_at: <dateString>, updated_at: <dateString> }, {<moreDrinkObjects>}, ...]` |
-| `https://mix-master-api.onrender.com/api/v1/drinks/:id` | GET | not needed | Single Drink(by id): `{ id: 5, name: 'Campari Orange', ingredients: {...}, directions: {...}, alcoholic: true, isFavorite: false, image: <url> created_at: <dateString>, updated_at: <dateString> }` |
+| `https://stack-pedia-api.adaptable.app/api/v1/technologies/all` | GET | not needed | Array of all existing technologies: `[{ _id: 5, name: 'Python', type: 'Programming Language'...}, {_id: 6, name: "Java", type: "Programming Language"...}, ... ]` |
+| `https://stack-pedia-api.adaptable.app/api/v1/technologies/:category` | GET | not needed | Array of technologies sorted by category: `[{overall_type: <category>}, {overall_type: <category>}... ]` |
+| `https://stack-pedia-api.adaptable.app/api/v1/technology/:id` | GET | not needed | Single technology by id: `{_id: <id>}` |
+| `https://stack-pedia-api.adaptable.app/api/v1/stacks/all` | GET | not needed | Array of all existing stacks: `[{ _id: 5, name: 'MERN Stack', type: 'fullstack'...}, {_id: 6, name: "LAMP Stack", type: "fullstack"...}, ... ]` |
+| `https://stack-pedia-api.adaptable.app/api/v1/stacks/:type` | GET | not needed | Array of stacks sorted by category: `[{overall_type: <category>}, {overall_type: <category>}... ]` |
+| `https://stack-pedia-api.adaptable.app/api/v1/stack/:id` | GET | not needed | Single stack by id: `{_id: <id>}` |
