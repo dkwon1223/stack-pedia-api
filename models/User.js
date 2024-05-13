@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
+const Tech = require("./Tech");
+const Stack = require("./Stack");
 
 const Schema = mongoose.Schema
 
@@ -12,6 +14,14 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
+        required: true
+    },
+    favoriteTechs: {
+        type: [Tech.schema],
+        required: true
+    },
+    favoriteStacks: {
+        type: [Stack.schema],
         required: true
     }
 })

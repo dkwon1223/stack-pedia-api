@@ -142,4 +142,63 @@ app.post("/api/v1/user/login", async (request, response) => {
   }
 })
 
+app.get("/api/v1/user/:id", async (request, response) => {
+  const targetId = request.params.id;
+  try {
+    const user = await User.findOne({ _id: ObjectId.createFromHexString(targetId) })
+    if(!user) {
+      return response.status(404).json({ error: "Document not found" })
+    }
+    response.status(200).json(user);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
+  }
+})
+
+app.patch("/api/v1/user/add/favtech/:id", async (request, response) => {
+  const targetId = request.params.id;
+  try {
+    const user = await User.findOne({ _id: ObjectId.createFromHexString(targetId) })
+    const update =  {
+      favoriteTechs: [...user.favoriteTechs, request.body]
+    }
+    if(!user) {
+      return response.status(404).json({ error: "Document not found" })
+    }
+    await User.findOneAndUpdate(
+      { _id: ObjectId.createFromHexString(targetId) },
+      { $set: update },
+      { new: true }
+    )
+    response.status(200).json(user);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
+  }
+})
+
+app.patch("/api/v1/user/add/favstack/:id", async (request, response) => {
+  const targetId = request.params.id;
+  try {
+    const user = await User.findOne({ _id: ObjectId.createFromHexString(targetId) })
+    const update =  {
+      favoriteStacks: [...user.favoriteStacks, request.body]
+    }
+    if(!user) {
+      return response.status(404).json({ error: "Document not found" })
+    }
+    await User.findOneAndUpdate(
+      { _id: ObjectId.createFromHexString(targetId) },
+      { $set: update },
+      { new: true }
+    )
+    response.status(200).json(user);
+  } catch(error) {
+    console.error("Error retrieving documents:", error)
+    response.status(500).json({error: "Internal server error"})
+  }
+})
+
+
 
